@@ -1,7 +1,26 @@
 
+<div class="row-fluid">
+    <div class="span2">
+        Votre critère:
+    </div>
+    <div class="span2">
+        <input type="text" ng-model="searchTerm" ng-change="search()"></input>
+    </div>
+</div>
 
-<input type="text" ng-model="searchTerm"></input>
-<button ng-click="search()">
-    recherche
-</button>
-<div ng-repeat="offre in offres">{{offre}}</div>
+
+<div ng-repeat="offre in offres">
+    <div class="row-fluid">
+        <div class="span2">
+            <img ng-src="{{offre.image}}" class="img-rounded">
+        </div>
+        <div class="span2">
+            {{offre.description}}
+        </div>
+        <div class="span2">
+            {{offre.price}}
+        </div>
+    </div>
+
+
+</div>

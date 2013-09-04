@@ -40,6 +40,7 @@ app.get('/offres', function (req, res) {
         response.on('end', function () {
             console.log("=================================================================");
             parse(str);
+
             console.log("=================================================================");
         });
     };
@@ -53,5 +54,17 @@ app.get('/offres', function (req, res) {
 });
 
 var parse = function(str) {
-//    console.log(str);
+    console.log("=================================================================");
+    //console.log($(str).find('.list-lbc a'));
+    //console.log($(str).find('.list-lbc a'));
+
+    var result = $(str).find('.list-lbc a').map(
+    	function(index, el) {
+    		return {
+    			image: 'coucou' //$(el).find('.image img').attr('src')
+    		};
+    	});
+    console.log(result);
+
+    console.log("=================================================================");
 };

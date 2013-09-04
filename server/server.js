@@ -39,7 +39,8 @@ app.get('/offres', function (req, res) {
         //the whole response has been recieved, so we just print it out here
         response.on('end', function () {
             console.log("=================================================================");
-            parse(str);
+            var rez = parse(str);
+            res.send(rez, 200);
 
             console.log("=================================================================");
         });
@@ -50,7 +51,6 @@ app.get('/offres', function (req, res) {
 
     http.request(options, callback).end();
 
-    res.send({ok: "ok"}, 200);
 });
 
 var parse = function(str) {
@@ -58,13 +58,22 @@ var parse = function(str) {
     //console.log($(str).find('.list-lbc a'));
     //console.log($(str).find('.list-lbc a'));
 
-    var result = $(str).find('.list-lbc a').map(
-    	function(index, el) {
-    		return {
-    			image: 'coucou' //$(el).find('.image img').attr('src')
-    		};
-    	});
-    console.log(result);
+    var rez = [];
 
+    var result = $(str).find('.list-lbc a').
+        each(function(i, elem) {
+            var $elem = $(elem)
+            rez.push({
+                image: $elem.find('.image img').attr('src'),
+                description: $elem.find('.title').text().trim(),
+                price: $elem.find('.price').text().trim()
+            }) ;
+        });
+
+
+    console.log(rez);
     console.log("=================================================================");
+
+
+    return rez;
 };

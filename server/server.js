@@ -18,14 +18,16 @@ console.log("Server is listening for HTTP requests on port 3000...");
 var options = {
     host: 'www.leboncoin.fr',
     port: 80,
-    path_root: '/annonces/offres/{city}/?f=a&th=1&q='
+    path_root: '/{category}/offres/{city}/?f=a&th=1&q='
 };
 
 app.get('/offres', function (req, res) {
 
-    var query = req.query['q'];
-    var city = req.query['r'];
-    city = 'ile_de_france' + (req.query['r'] ? '/' + alnumuscorify(city) : '');
+    var query = req.query['q'] || '',
+        city = req.query['r'],
+        category = req.query['c'];
+    city = 'ile_de_france' + (city ? '/' + alnumuscorify(city) : '');
+    category = category ? alnumuscorify(category) : 'annonces';
 
 	console.log("query", query);
 	console.log("city", city);
@@ -48,7 +50,7 @@ app.get('/offres', function (req, res) {
         });
     };
 
-    options.path = (options.path_root + query).replace('{city}', city);
+    options.path = (options.path_root + query).replace('{city}', city).replace('{category}', category);
     console.log("options.path", options.path);
 
     http.request(options, callback).end();

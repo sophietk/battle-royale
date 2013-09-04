@@ -66,7 +66,7 @@ var parse = function(str) {
             rez.push({
                 image: $elem.find('.image img').attr('src'),
                 description: $elem.find('.title').text().trim(),
-                price: $elem.find('.price').text().trim()
+                price: parseInt($elem.find('.price').text().trim().split(' ')[0])
             }) ;
         });
 

@@ -2,7 +2,7 @@
 
 /* App Module */
 
-angular.module('battle', []).
+angular.module('battle', ['offreResources']).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider.
             when('/offres', {templateUrl: 'html/offres.html',   controller: OffreCtrl}).

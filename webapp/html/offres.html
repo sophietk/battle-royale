@@ -1,1 +1,7 @@
-<div>{{msg}}</div>
+
+
+<input type="text" ng-model="searchTerm"></input>
+<button ng-click="search()">
+    recherche
+</button>
+<div ng-repeat="offre in offres">{{offre}}</div>

@@ -4,7 +4,8 @@
     "dependencies": {
         "express": "3.x",
         "request": "2.12.x",
-        "underscore": "1.4.4"
+        "underscore": "1.4.4",
+        "jquery": "1.x"
     },
     "engines": {
         "node": ">=0.8"

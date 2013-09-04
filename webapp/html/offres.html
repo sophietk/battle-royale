@@ -9,18 +9,21 @@
 </div>
 
 
-<div ng-repeat="offre in offres">
-    <div class="row-fluid">
-        <div class="span2">
-            <img ng-src="{{offre.image}}" class="img-rounded">
-        </div>
-        <div class="span2">
-            {{offre.description}}
-        </div>
-        <div class="span2">
-            {{offre.price}}
-        </div>
-    </div>
 
+<div class="row-fluid">
+    <table class="table table-hover">
+        <tr ng-repeat="offre in offres">
+            <td>
+                <img ng-src="{{offre.image}}" class="img-rounded">
+            </td>
+            <td>
+                {{offre.description}}
+            </td>
+            <td>
+                {{offre.price}}
+            </td>
+        </tr>
+
+    </table>
 
 </div>

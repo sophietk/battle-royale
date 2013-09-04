@@ -17,7 +17,17 @@
     </div>
     <div class="span8 offset3">
         <table class="table table-hover">
-            <tr ng-repeat="offre in offres">
+            <thead>
+            <tr>
+                <th></th>
+                <th ng-click="sort('description')"><b>Descriptif</b></th>
+                <th ng-click="sort('price')">Prix</th>
+                <th ng-click="sort('city')">Ville</th>
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr ng-repeat="offre in offres | orderBy:sortCol:sortAsc">
                 <td>
                     <img ng-src="{{offre.image}}" class="img-rounded">
                 </td>
@@ -25,12 +35,14 @@
                     {{offre.description}}
                 </td>
                 <td>
-                    {{offre.price}}
+                    {{offre.price | number:2}} €
                 </td>
                 <td>
                     {{offre.city}}
                 </td>
             </tr>
+            </tbody>
+
 
         </table>
     </div>

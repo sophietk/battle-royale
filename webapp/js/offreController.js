@@ -1,5 +1,7 @@
 function OffreCtrl($scope, Offre) {
 
+    $scope.sortCol = "";
+    $scope.sortAsc = true;
 
     $scope.offres = Offre.query({q:""});
 
@@ -27,4 +29,13 @@ function OffreCtrl($scope, Offre) {
         { id: "Seine-Saint-Denis" },
         { id: "Val-de-Marne" },
         { id: "Val-d'Oise" } ];
+
+
+    $scope.sort  = function(col){
+        if($scope.sortCol=== col){
+            $scope.sortAsc = !$scope.sortAsc;
+        }
+        $scope.sortCol = col;
+
+    };
 }

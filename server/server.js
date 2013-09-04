@@ -18,13 +18,15 @@ console.log("Server is listening for HTTP requests on port 3000...");
 var options = {
     host: 'www.leboncoin.fr',
     port: 80,
-    path: '/annonces/offres/ile_de_france/?f=a&th=1&q=xbox'
+    path_root: '/annonces/offres/ile_de_france/?f=a&th=1&q='
 };
 
 
 app.get('/offres', function (req, res) {
 
-	console.log("/offres");
+    var query = req.query['q'];
+
+	console.log("query", query);
 
     var callback = function(response) {
         var str = '';
@@ -42,13 +44,14 @@ app.get('/offres', function (req, res) {
         });
     };
 
+    options.path = options.path_root + query;
+    console.log("options.path", options.path);
+
     http.request(options, callback).end();
 
     res.send({ok: "ok"}, 200);
 });
 
 var parse = function(str) {
-    console.log("=================================================================");
-    console.log(str);
-    console.log("=================================================================");
+//    console.log(str);
 };

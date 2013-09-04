@@ -1,18 +1,21 @@
 
-<div class="row-fluid">
-    <div class="span2">
-        Votre critère:
-    </div>
-    <div class="span2">
-        <input type="text" ng-model="searchTerm" ng-change="search()"></input>
-    </div>
-</div>
 
 
 
 <div class="row-fluid">
     <div class="span1"></div>
-    <div class="span10">
+    <div class="span3">
+        <div>
+            <input type="text" ng-model="searchTerm" ng-change="search()"></input>
+        </div>
+        <div>
+            <select ng-model="selectedRegion" ng-options="region.id for region in regions" ng-change="search()">
+                <option value="">-- choisissez une region --</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="span8 offset3">
         <table class="table table-hover">
             <tr ng-repeat="offre in offres">
                 <td>

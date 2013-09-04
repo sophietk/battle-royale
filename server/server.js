@@ -55,12 +55,10 @@ app.get('/offres', function (req, res) {
 
 var parse = function(str) {
     console.log("=================================================================");
-    //console.log($(str).find('.list-lbc a'));
-    //console.log($(str).find('.list-lbc a'));
 
     var rez = [];
 
-    var result = $(str).find('.list-lbc a').
+    $(str).find('.list-lbc a').
         each(function(i, elem) {
             var $elem = $(elem)
             rez.push({
@@ -69,11 +67,6 @@ var parse = function(str) {
                 price: parseInt($elem.find('.price').text().trim().split(' ')[0])
             }) ;
         });
-
-
-    console.log(rez);
-    console.log("=================================================================");
-
 
     return rez;
 };
